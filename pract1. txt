@@ -1,0 +1,121 @@
+/**
+ * You can edit, run, and share this code. 
+ * play.kotlinlang.org 
+ */
+
+fun qns1(){
+    var basketNum: Int = 10;
+    var eggNum: Int = 5;
+    println("You have $basketNum baskets");
+    println("You have $eggNum eggs per basket");
+    
+    val totalNum: Int = basketNum * eggNum;
+    println("If you have $eggNum per basket and $basketNum baskets, the total number of eggs is $totalNum")
+}
+
+fun qns2(){
+    var score:Int = 0;
+    var msg:String = "";
+    if (score >= 0 && score <= 100){
+      msg = "Valid Score";
+    }
+    else {
+        msg = "Invalid Score.";
+    }
+    println(msg)
+}
+
+fun qns3(){
+    var score:Int = 0;
+    
+    when (score){
+        !in 0..100 -> println("Invalid Score");
+        else -> println("Valid Score");
+    }
+}
+
+fun qns4(){
+    var arrayTest = intArrayOf(1,4,6,7,0);
+    var arraySum:Int = 0;
+    for (i in arrayTest) arraySum += i;
+    println(arraySum);
+}
+
+//qns5
+fun printEcho(message:String){
+    println(message);
+}
+
+fun readString(x:String){
+    val xLength = x.length;
+    println("Size of $x is $xLength");
+    println("In lower case: ${x.toLowerCase()}");
+    println("Contains the character 'e' ${x.contains("e",ignoreCase=true)}")
+}
+
+fun qns6(){
+    var arraySample = arrayOf("Hello Students","I Love Kotlin","3 days to my last exam");
+	for (i in arraySample){
+        readString(i);
+        println("///next element///");
+    };
+}
+
+//qns7 and 8
+fun kotlinClasses(){
+    open class Person(name: String, age : Int){
+ 		open var name: String
+ 		open var age: Int
+     	 init{
+			this.name = name
+ 			this.age = age
+ 		}
+        
+        open fun speak(msg : String?): Boolean {
+        	if(msg != null) {
+        		println(msg)
+        		return true
+            }
+            else
+                return false
+       	}
+         
+         open fun yearOfBirth() = 2020 - age
+	}
+    
+    open class Student(override var name: String, val studentId: Long) : Person(name, 16) {
+         fun isIntelligent() = true
+        
+         override fun speak(msg: String?): Boolean {
+             if (msg != null) {
+                 println("Student says " + msg)
+                 return true
+                 
+             } else
+             return false
+         }
+    }
+    
+    open class Employee(override var name: String, override var age: Int) : Person(name,age) {
+         fun receivePayment() = true
+         override fun speak(msg: String?): Boolean {
+             if (msg != null) {
+                 println("Employee says : " + msg)
+                 return true
+             } else
+             return false
+         }
+         
+         override fun yearOfBirth() = 25
+    }
+    
+    var student = Student("Jane Doe", 123456);
+    var employee = Employee("John Doe", 28);
+    
+    student.speak("My name is ${student.name}")
+    employee.speak("I'm ${employee.age}")
+
+}
+
+fun main() {
+}
